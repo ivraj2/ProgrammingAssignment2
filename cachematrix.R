@@ -6,7 +6,6 @@
 ## f1 <- makeCacheMatrix(matrix(c(6,7,8,9),2,2))
 ## m1 <- cacheSolve(f1)
 
-
 ## This function returns lisf of functions for calculating
 ## inverse of a matrix. Already solved matrices are cached
 makeCacheMatrix <- function(x = matrix()) {
