@@ -1,7 +1,13 @@
-## Put comments here that give an overall description of what your
-## functions do
+## Pair of utility methods for calculating matrix inverse with
+## the solve(M) -function. The solutions are cached, so that
+## the inverse of any given matrix is calculated only once. 
 
-## This utility function returns lisf of functions for calculating
+## Example usage:
+## f1 <- makeCacheMatrix(matrix(c(6,7,8,9),2,2))
+## m1 <- cacheSolve(f1)
+
+
+## This function returns lisf of functions for calculating
 ## inverse of a matrix. Already solved matrices are cached
 makeCacheMatrix <- function(x = matrix()) {
   m <- NULL
@@ -25,7 +31,7 @@ makeCacheMatrix <- function(x = matrix()) {
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
   m <- x$getinverse()
-  if(!is.null(m)) {
+  if(!is.null(m)) { ## Already calculated, so just return from cache
     message("Using cached data")
     return(m)
   }else{
@@ -33,7 +39,7 @@ cacheSolve <- function(x, ...) {
   }
   data <- x$get()
   m <- solve(data, ...)
-  x$setinverse(m)
+  x$setinverse(m) ## Add result to cache
   m
   
 }
